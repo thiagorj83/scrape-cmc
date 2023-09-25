@@ -21,7 +21,6 @@ Antes de usar este projeto, certifique-se de ter os seguintes pré-requisitos in
 - Python
 - Selenium
 - Chrome WebDriver
-- Uma conta no [CoinMarketCap](https://coinmarketcap.com/) (para obter uma chave de API, se necessário)
 
 ## Como Usar
 

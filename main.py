@@ -30,8 +30,7 @@ def main():
     
     dismiss_cookie_banner(browser)
     time.sleep(2)
-    zoom_out(browser)
-    time.sleep(2)
+
 
     html = browser.page_source
 

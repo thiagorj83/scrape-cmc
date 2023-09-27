@@ -9,7 +9,6 @@ from browser_get import browser_get
 import csv
 import time
 from zoom_out import zoom_out
-from scroll2element2 import scroll2element2
 
 
 OUTPUT_FILE = 'cmc_coin_data.csv'

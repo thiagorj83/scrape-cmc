@@ -8,7 +8,8 @@ from selenium.webdriver.common.by import By
 from browser_get import browser_get
 import csv
 import time
-
+from zoom_out import zoom_out
+from scroll2element2 import scroll2element2
 
 
 OUTPUT_FILE = 'cmc_coin_data.csv'
@@ -28,21 +29,21 @@ def main():
     browser_get(browser,'https://coinmarketcap.com/all/views/all/')
     
     dismiss_cookie_banner(browser)
+    time.sleep(2)
+    zoom_out(browser)
+    time.sleep(2)
 
     html = browser.page_source
-
-
 
     # Salva o HTML em um arquivo local
     with open(output_path2, 'w', encoding='utf-8') as file:
         file.write(html)
     
-    
+
     target='//*[@id="__next"]/div[2]/div[2]/div/div[1]/div/div[3]/button'
     
-    while scroll2element(By.XPATH,target,browser):
-        scroll2element(By.XPATH,target,browser)
-
+    # while scroll2element(By.XPATH,target,browser):
+    scroll2element(By.XPATH,target,browser)
     rank=browser.find_element(By.XPATH,'//*[@id="__next"]/div[2]/div[2]/div/div[1]/div/div[2]/div[3]/div/table/tbody/tr[last()]/td[1]/div').text
 
     time.sleep(3)
@@ -52,10 +53,13 @@ def main():
             with open(output_path, 'w') as file:
                 writer = csv.writer(file)
                 writer.writerow(cmc_data)
+                
+        print(f'Total lines:{rank}')
+        print(f'CMC DATA LEN{len(cmc_data)}')
+        print(cmc_data)
 
     else:
         print('A página não foi raspada corretamente.')
-    print(f'Total lines:{rank}')
 
     finish_time=datetime.now()
     print(f'Finish time:{finish_time}')

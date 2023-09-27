@@ -19,12 +19,7 @@ def scroll2element(by_,target,browser):
             element_present = EC.presence_of_element_located((by_,target))
             element = WebDriverWait(browser, timeout).until(element_present)
             last_position=browser.execute_script("return window.pageYOffset;")
-            print('*****************')
-            print(f'current_position:{current_position}')
-            print(f'last_position:{last_position}')
-            print(f'finished:{finished}')
-            print(f'element displayed:{element.is_displayed()}')
-            print('*****************')
+
             if element.is_displayed() and not finished:
                 found = True
                 print('found')
